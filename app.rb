@@ -21,3 +21,22 @@ get '/' do
 	@barbers = Barbers.all
 	erb :index
 end
+
+get '/visit' do 
+	@barbers = Barbers.all
+	erb :visit
+end
+
+post '/visit' do
+	@name = params[:name]
+	@phone = params[:phone]
+	@datestamp = params[:darestamp]
+	@color = params[:color]
+	@barber = params[:barber]
+
+	erb "<h2>Thank you, you are successfully enlisted</h2>"
+end
+
+get '/support' do
+	erb :support
+  end
