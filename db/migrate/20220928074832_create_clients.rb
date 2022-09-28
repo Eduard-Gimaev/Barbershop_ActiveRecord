@@ -8,5 +8,6 @@ class CreateClients < ActiveRecord::Migration[7.0]
       t.string :color
       
     end
+
   end
 end
