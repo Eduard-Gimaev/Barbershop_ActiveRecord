@@ -18,8 +18,13 @@ class Barbers < ActiveRecord::Base
 end
 
 get '/' do
-	@barbers = Barbers.all
+
 	erb :index
+end
+
+get '/listOfBarbers' do
+	@barbers = Barbers.all
+	erb :listOfBarbers
 end
 
 get '/visit' do 
@@ -28,7 +33,7 @@ get '/visit' do
 end
 
 post '/visit' do
-	@name = params[:name]
+	@name = params[:clientname]
 	@phone = params[:phone]
 	@datestamp = params[:darestamp]
 	@color = params[:color]
@@ -36,6 +41,10 @@ post '/visit' do
 
 	erb "<h2>Thank you, you are successfully enlisted</h2>"
 end
+
+get '/contacts' do
+	"Hello World"
+  end
 
 get '/support' do
 	erb :support
