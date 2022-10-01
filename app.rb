@@ -11,15 +11,26 @@ class YourApplication < Sinatra::Base
 	register Sinatra::ActiveRecordExtension
 end
 
-class Clients < ActiveRecord::Base
+class Client < ActiveRecord::Base
 end
 
-class Barbers < ActiveRecord::Base
+class Barber < ActiveRecord::Base
 end
 
-get '/' do
-
+get '/' do	
 	erb :index
+end
+
+get '/visit' do
+	@barbers = Barbers.all
+	erb :visit
+end
+
+post '/visit' do
+	c = Client.new params[:client]
+	c.save
+	erb "<h2>Thank you you are enlisted</h2"
+
 end
 
 get '/listOfBarbers' do
@@ -27,20 +38,11 @@ get '/listOfBarbers' do
 	erb :listOfBarbers
 end
 
-get '/visit' do 
-	@barbers = Barbers.all
-	erb :visit
+get '/listOfClients' do
+	@clients = Clients.all
+	erb :listOfClients
 end
 
-post '/visit' do
-	@name = params[:clientname]
-	@phone = params[:phone]
-	@datestamp = params[:darestamp]
-	@color = params[:color]
-	@barber = params[:barber]
-
-	erb "<h2>Thank you, you are successfully enlisted</h2>"
-end
 
 get '/contacts' do
 	"Hello World"
