@@ -52,6 +52,11 @@ get '/listOfBarbers' do
 	erb :listOfBarbers
 
   end
+
+get '/barber/:id' do
+	erb :barber
+end
+
   get '/listOfClients' do
 	
 	erb :listOfClients
