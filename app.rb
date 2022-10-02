@@ -12,6 +12,10 @@ class YourApplication < Sinatra::Base
 end
 
 class Client < ActiveRecord::Base
+	validates :clientname, presence: true
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :color, presence: true
 	
 end
 
