@@ -12,6 +12,7 @@ class YourApplication < Sinatra::Base
 end
 
 class Client < ActiveRecord::Base
+	
 end
 
 class Barber < ActiveRecord::Base
@@ -22,27 +23,26 @@ get '/' do
 end
 
 get '/visit' do
-	@barbers = Barbers.all
+	
 	erb :visit
 end
 
 post '/visit' do
 	c = Client.new params[:client]
 	c.save
-	erb "<h2>Thank you you are enlisted</h2"
+	erb "<h2>Thank you are enlisted</h2"
 
 end
 
 get '/listOfBarbers' do
-	@barbers = Barbers.all
+	@barbers = Barber.all
 	erb :listOfBarbers
-end
 
-get '/listOfClients' do
-	@clients = Clients.all
+  end
+  get '/listOfClients' do
+	@clients = Client.all
 	erb :listOfClients
-end
-
+  end
 
 get '/contacts' do
 	"Hello World"
