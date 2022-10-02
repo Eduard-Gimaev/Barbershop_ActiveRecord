@@ -12,11 +12,16 @@ class YourApplication < Sinatra::Base
 end
 
 class Client < ActiveRecord::Base
-	validates :clientname, presence: true
+	validates :clientname, presence: true, length: {minimum: 3}
 	validates :phone, presence: true
 	validates :datestamp, presence: true
 	validates :color, presence: true
 	
+end
+
+before do 
+	@barbers = Barber.all
+	@clients = Client.all
 end
 
 class Barber < ActiveRecord::Base
@@ -27,24 +32,28 @@ get '/' do
 end
 
 get '/visit' do
-	
+	@c = Client.new
 	erb :visit
 end
 
 post '/visit' do
-	c = Client.new params[:client]
-	c.save
+	@c = Client.new params[:client]
+	if @c.save
 	erb "<h2>Thank you are enlisted</h2"
+	else
+		@error = @c.errors.full_messages.first
+		erb :visit
+	end
 
 end
 
 get '/listOfBarbers' do
-	@barbers = Barber.all
+	
 	erb :listOfBarbers
 
   end
   get '/listOfClients' do
-	@clients = Client.all
+	
 	erb :listOfClients
   end
 

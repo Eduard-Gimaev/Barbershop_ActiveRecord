@@ -2,6 +2,6 @@
 
 <% @barbers.each do |barber| %>
     <p>
-    <%= barber.barbername %>
+    <a href="/barber/<%= barber.id %>"> <%= barber.barbername %></a>
     </p>
 <%end%>
