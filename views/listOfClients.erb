@@ -2,9 +2,6 @@
 
 <% @clients.each do |client| %>
     <p>
-    <%= client.clientname %>
-    <%= client.phone %>
-    <%= client.datestamp %>
-    <%= client.color %>
+    <a href="/client/<%= client.id %>"> <%= client.clientname %></a>
     </p>
 <%end%>

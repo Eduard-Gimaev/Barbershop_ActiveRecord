@@ -54,13 +54,18 @@ get '/listOfBarbers' do
   end
 
 get '/barber/:id' do
+	@barber = Barber.find(params[:id])
 	erb :barber
 end
 
   get '/listOfClients' do
-	
 	erb :listOfClients
   end
+
+  get '/client/:id' do
+	@client = Client.find(params[:id])
+	erb :client
+end
 
 get '/contacts' do
 	"Hello World"
